@@ -1,0 +1,17 @@
+﻿void Main()
+{
+	var client = new JsonServiceClient("http://ss.localtest.me/") {
+		UserName = "kai.rune@slettemoen.no",
+		Password = "pallgura"
+	};
+
+	var authResponse = client.Get<string>("/auth/credentials?username=kai.rune&password=pallgura");
+	authResponse.Dump();
+
+	var isAuthenticatedResponse = client.Get<string>("/IsAuthenticated");
+	isAuthenticatedResponse.Dump();
+
+	var helloResponse = client.Get<string>("/hello/world");
+	helloResponse.Dump();
+	
+}
